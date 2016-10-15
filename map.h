@@ -16,6 +16,7 @@ const char B_STR = '|';
 const char B_LFT = '\\';
 const char B_RT = '/';
 const char OBS = '^';
+const char FIN_LINE = '=';
 
 class Map {
 public:
