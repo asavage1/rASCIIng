@@ -50,8 +50,8 @@ User updatePosition(User user, Map &road)
  */
 bool reached_finish(User user, Map &road) 
 {
-
-		if (user.row >= road.getHeight()) {
+        /* Changed from user.row to user.row - 4) */
+		if (user.row - 4 >= road.getHeight()) {
 				return true;
 		} else {
 				return false;
