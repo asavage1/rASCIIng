@@ -111,9 +111,9 @@ char *Map::createNext(int lastRow)
                         row[i] = OOB;
                 } else if (i == boundaryIndex + offset) {
                         row[i] = boundaryChar;
-                } else if (i < boundaryIndex + offset + cols) {
+                } else if (i < boundaryIndex + offset + ROAD_WIDTH) {
                         row[i] = RD;
-                } else if (i == boundaryIndex + offset + cols) {
+                } else if (i == boundaryIndex + offset + ROAD_WIDTH) {
                         row[i] = boundaryChar;
                 } else {
                         row[i] = OOB;
