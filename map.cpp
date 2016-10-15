@@ -127,7 +127,11 @@ char *Map::createNext(int lastRow)
                 } else if (i == boundaryIndex + offset) {
                         row[i] = boundaryChar;
                 } else if (i < boundaryIndex + offset + ROAD_WIDTH) {
-                        row[i] = RD;
+                        if (getHeight() - 2 == lastRow) {
+                                row[i] = FIN_LINE;
+                        } else {
+                                row[i] = RD;
+                        }
                 } else if (i == boundaryIndex + offset + ROAD_WIDTH) {
                         row[i] = boundaryChar;
                 } else {

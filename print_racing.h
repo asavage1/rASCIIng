@@ -23,6 +23,8 @@ const char CAR_WHEEL = 'O';
 
 void print_race(Map *map, User car);
 
+void print_countdown();
+
 void print_row(User car, char *row, int width, int row_index);
 
 #endif // PRINT_RACING_H

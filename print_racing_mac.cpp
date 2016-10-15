@@ -15,6 +15,7 @@
 #include <string>
 #include <stdio.h>
 #include <ncurses.h>
+#include <unistd.h>
 using namespace std;
 
 /*
@@ -26,31 +27,43 @@ void print_race(Map *map, User car)
 {
         int map_width = map->getWidth();
         int map_height = map->getHeight();
-        //for (int i = 0; /*i < number of grid views*/; i++)
-        //{
-                for (int j = VIEW_LENGTH + car.row; j > car.row - 4; j--)
+        for (int j = VIEW_LENGTH + car.row; j > car.row - 4; j--)
+        {
+                if (j < map_height)
                 {
-                        if (j < map_height)
-                        {
-                                char *row = map->getMapLine(j);
-                                print_row(car, row, map_width, j);
-                        } else {
-                                addch('\n');
-//                                fputc('\n', stdout);
-                        }
+                        char *row = map->getMapLine(j);
+                        print_row(car, row, map_width, j);
+                } else {
+                        addch('\n');
                 }
-
-        //}
+        }
 }
 
-/*i
+void print_countdown()
+{
+        cout << "Ready?" << endl;
+        cout.flush();
+        usleep(500000);
+        cout << "3.. ";
+        cout.flush();
+        usleep(1000000);
+        cout << "2.. ";
+        cout.flush();
+        usleep(1000000);
+        cout << "1.. ";
+        cout.flush();
+        usleep(1000000);
+        cout << "GO!" << endl;
+        cout.flush();
+        usleep(500000);
+}
+
+/*
  * Purpose:     Prints out the characters associated with the contents of the 
  *              map row.
  * Parameters:  row is the pointer to the array of characters.
  * Value returned: None (void function).
  */
-
-
 void print_row(User car, char *row, int width, int row_index)
 {
         for (int i = 0; i < width; i++)
