@@ -90,7 +90,7 @@ char *Map::createNext(int lastRow)
 {
         srand(time(NULL));
 
-        char *row;
+        char *row = new char[cols];
         int boundaryIndex = getBoundaryIndex(lastRow);
         int offset = rand()%MAX_OFFSET - 1;
         char boundaryChar;

@@ -11,19 +11,18 @@ using namespace std;
  */
 User updatePosition(User user, Map road)
 {
-		int penalty = 0;
 		char input;
 
-		if (reached_finish) {
+		if (reached_finish(user, road)) {
 				user.finished = true;
 				return user;
 		}
 
 		cin >> input;
 		if (input == 'a') {
-				move_left(user, road);
+				move_left(user);
 		} else if (input == 'd') {
-				move_right(user, road);
+				move_right(user);
 		}
 
 		return user;
@@ -50,9 +49,9 @@ bool reached_finish(User user, Map road)
  * Parameters: the user, the map
  * Value returned: the updated user
  */
-User move_left(User user, Map road)
+User move_left(User user)
 {
-		if (hit_object(user, road)) {
+		if (hit_object(user)) {
 				user.penalty++;
 		}
 
@@ -66,16 +65,16 @@ User move_left(User user, Map road)
  * Parameters: the user, the map
  * Value returned: the updated user
  */
-User move_right(User user, Map road)
+User move_right(User user)
 {
 
-		if (hit_object) {
-				user.penalty++;
-		}
-
-		user.row = user.row - 1;
-
-		return user;
+        if (hit_object(user)) {
+                user.penalty++;
+        }
+        
+        user.row = user.row - 1;
+        
+        return user;
 
 }
 
@@ -83,20 +82,20 @@ User move_right(User user, Map road)
  * Parameters: the user, the road
  * Value returned: true if has hit and object, false if not
  */
-bool hit_object(User user, Map road)
+bool hit_object(User user)
 {
 
-		if (user.col + 2 == B_STR or user.col + 2 == B_LFT or user.col + 2 == B_RT) {
-				return true;
-		} else if (user.col - 2 == B_STR or user.col - 2 == B_LFT or user.col - 2 == B_RT) {
-				return true;
-		} else if (user.row - 3 == B_STR or user.row - 3 == B_LFT or user.col - 2 == B_RT) {
-				return true;
-		} else if (user.row == B_STR or user.row == B_LFT or user.row == B_RT) {
-				return true;
-		}
-
-		return false;
+        if (user.col + 2 == B_STR or user.col + 2 == B_LFT or user.col + 2 == B_RT) {
+                return true;
+        } else if (user.col - 2 == B_STR or user.col - 2 == B_LFT or user.col - 2 == B_RT) {
+                return true;
+        } else if (user.row - 3 == B_STR or user.row - 3 == B_LFT or user.col - 2 == B_RT) {
+                return true;
+        } else if (user.row == B_STR or user.row == B_LFT or user.row == B_RT) {
+                return true;
+        }
+        
+        return false;
 }
 
 
