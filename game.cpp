@@ -29,13 +29,8 @@ void Game::play()
 	time_t startTime = time(NULL);
 	print_race(map, player);
 	while (!player.finished) {
-		cout << "hereeeee" << endl;
 		player = updatePosition(player, map);
-
-		cout << "hereeeee" << endl;
 		print_race(map, player);
-
-		cout << "hereeeee" << endl;
 		usleep(PAUSE);
 	}
 	time_t endTime = time(NULL);
