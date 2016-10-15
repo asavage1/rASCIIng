@@ -16,7 +16,7 @@ using namespace std;
 Game::Game()
 {
 	player.finished = false;
-	player.row = 0;
+	player.row = 4;
 	player.col = map.getWidth() / 2;
 	player.penalty = 0;
 	seconds = 0;
