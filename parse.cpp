@@ -50,7 +50,7 @@ bool reached_finish(User user, Map road)
  */
 User move_left(User user, Map road)
 {
-		if (hit_object) {
+		if (hit_object(user, road)) {
 				user.penalty++;
 		}
 
