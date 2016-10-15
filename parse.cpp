@@ -59,7 +59,7 @@ User move_left(User user)
 		}
 
 		user.col = user.col - 1;
-
+		user.row = user.row + 1;
 		return user;
 }
 
@@ -76,8 +76,8 @@ User move_right(User user)
         	return user;
 	}
         
-        user.row = user.row - 1;
-        
+        user.row = user.row + 1;
+        user.col = user.col + 1;
         return user;
 
 }
@@ -86,10 +86,24 @@ User move_right(User user)
  * Parameters: the user, the road
  * Value returned: true if has hit and object, false if not
  */
-bool hit_object(User user)
+bool hit_object(User user, Map road)
 {
-
-        if (user.col + 2 == B_STR or user.col + 2 == B_LFT or user.col + 2 == B_RT) {
+	char top_left = road[user.row - 1][user.col - 2];
+	char top_right = road[user.row - 1][user.col + 2];
+	char bot_left = road[user.row - 3][user.col - 2];
+	char bot_right = road[user.row - 3][user.col + 2];
+        
+	if (top_left == B_STR or top_left == B_LFT or top_left == B_RT) {
+		return true;
+	} else if (top_right == B_STR or top_right == B_LFT or top_right == B_RT) {
+		return true;
+	} else if (bot_left == B_STR or bot_left == B_LFT or bot_left == B_RT) {
+		return true;
+	} else if (bot_right == B_STR or bot_right == B_LFT or bot_right == B_RT) {
+		return true;
+	}
+/*
+if (user.col + 2 == B_STR or user.col + 2 == B_LFT or user.col + 2 == B_RT ) {
                 return true;
         } else if (user.col - 2 == B_STR or user.col - 2 == B_LFT or user.col - 2 == B_RT) {
                 return true;
@@ -98,7 +112,7 @@ bool hit_object(User user)
         } else if (user.row == B_STR or user.row == B_LFT or user.row == B_RT) {
                 return true;
         } else {
-        
+  */      
         return false;
-}
+
 }
