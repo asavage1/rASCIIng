@@ -5,7 +5,7 @@
  * Parameters: the user to be updated, the map 
  * Value returned: modified user struct
  */
-User update_position(User user, map road)
+User updatePosition(User user, Map road)
 {
 		int penalty = 0;
 		char input;
@@ -30,10 +30,10 @@ User update_position(User user, map road)
  * Parameters: the user and the map
  * Value returned: true if at finish line, false if not
  */
-bool reached_finish(User user, map road) 
+bool reached_finish(User user, Map road) 
 {
 
-		if (user.row == map.get_height()) {
+		if (user.row == road.get_height()) {
 				return true;
 		} else {
 				return false;
@@ -46,7 +46,7 @@ bool reached_finish(User user, map road)
  * Parameters: the user, the map
  * Value returned: the updated user
  */
-User move_left(User user, map road)
+User move_left(User user, Map road)
 {
 		if (hit_object) {
 				user.penalty++;
@@ -62,7 +62,7 @@ User move_left(User user, map road)
  * Parameters: the user, the map
  * Value returned: the updated user
  */
-User move_right(User user, map road)
+User move_right(User user, Map road)
 {
 
 		if (hit_object) {
@@ -79,7 +79,7 @@ User move_right(User user, map road)
  * Parameters: the user, the road
  * Value returned: true if has hit and object, false if not
  */
-bool hit_object(User user, map road)
+bool hit_object(User user, Map road)
 {
 
 		if (user.col + 2 == B_STR or user.col + 2 == B_LFT or user.col + 2 == B_RT) {
