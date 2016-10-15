@@ -88,12 +88,18 @@ User move_right(User user, Map &road)
  */
 bool hit_object_left(User user, Map &road)
 {
-	char top_left = road.getElement(user.row - 1, user.col - 3);
-	char bot_left = road.getElement(user.row - 3, user.col - 3);
+	//ORIGINAL char top_left = road.getElement(user.row - 1, user.col - 3);
+	char top_left = road.getElement(user.row , user.col + 3);
+
+	char bot_left = road.getElement(user.row - 2, user.col + 3);
+	//char middle_left = road.getElement(user.row - 2, user.col - 3);
+	//char front = road.getElement(user.row - 3, user.col - 3);
 
 	if (top_left == B_STR or top_left == B_LFT or top_left == B_RT) {
+	    	cout << "true" << endl;
 		return true;
 	} else if (bot_left == B_STR or bot_left == B_LFT or bot_left == B_RT) {
+	    	cout << "true" << endl;
 		return true;
 	}
         return false;
