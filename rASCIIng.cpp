@@ -4,6 +4,7 @@
 // rASCIIng -- C++ Racing Terminal Game
 
 #include <iostream>
+//#include <ncurses.h>
 #include "game.h"
 using namespace std;
 
