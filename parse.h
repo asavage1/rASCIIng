@@ -1,6 +1,6 @@
 // parse.h
 #include map.h
-#include User.h
+#include Game.h
 
 User update_position(User user, map road);
 bool reached_finish(User user, map road);
