@@ -15,6 +15,7 @@
 #include <string>
 #include <stdio.h>
 #include <ncurses.h>
+#include <unistd.h>
 using namespace std;
 
 /*
@@ -26,6 +27,7 @@ void print_race(Map *map, User car)
 {
         int map_width = map->getWidth();
         int map_height = map->getHeight();
+        print_countdown();
         for (int j = VIEW_LENGTH + car.row; j > car.row - 4; j--)
         {
                 if (j < map_height)
@@ -36,6 +38,18 @@ void print_race(Map *map, User car)
                         addch('\n');
                 }
         }
+}
+
+void print_countdown()
+{
+        cout << "Ready?" << endl;
+        cout << "3.. ";
+        usleep(100 * 1000);
+        cout << "2.. ";
+        usleep(100 * 1000);
+        cout << "1.. ";
+        usleep(100 * 1000);
+        cout << "GO!" << endl;
 }
 
 /*
