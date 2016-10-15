@@ -95,7 +95,6 @@ char *Map::createNext(int lastRow)
         char *row = new char[cols];
         int boundaryIndex = getBoundaryIndex(lastRow);
         int offset = rand()%MAX_OFFSET - 1;
-        cout << offset << " " << boundaryIndex << endl;
         char boundaryChar;
 
         if (offset == -1) {
