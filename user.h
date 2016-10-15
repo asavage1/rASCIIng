@@ -2,6 +2,10 @@
 // 10/14/16
 //
 // rASCIIng user struct
+
+#ifndef USER_H
+#define USER_H
+
 struct User
 {
 	int row;
@@ -9,3 +13,5 @@ struct User
 	bool finished;
 	int penalty;
 };
+
+#endif // USER_H
