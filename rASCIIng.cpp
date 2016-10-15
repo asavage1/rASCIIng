@@ -8,7 +8,7 @@
 using namespace std;
 
 int main () {
-	Game race = new Game();
+	Game race;
 	race.play();
 	race.printResults();
 	return 0;

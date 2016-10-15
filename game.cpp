@@ -13,7 +13,6 @@
 
 Game::Game()
 {
-	map = new Map();
 	player.finished = false;
 	player.row = 0;
 	player.col = map.getWidth() / 2;
