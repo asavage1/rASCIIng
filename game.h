@@ -17,5 +17,5 @@ private:
 	const static unsigned int PAUSE = 250000;
 	Map map;
 	User player;
-	double time;
+	double seconds;
 };
