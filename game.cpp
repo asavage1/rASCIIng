@@ -24,17 +24,18 @@ Game::Game()
 
 void Game::play()
 {
-
-	cout << "here" << endl;
+	bool i = false;
 	time_t startTime = time(NULL);
 	print_race(&map, player);
 	while (!player.finished) {
 		player = updatePosition(player, map);
-		print_race(&map, player);
+		if (i++ % 2) {
+			print_race(&map, player);
+		}
 		usleep(PAUSE);
 	}
 	time_t endTime = time(NULL);
-	seconds = difftime(startTime, endTime) + player.penalty;
+	seconds = difftime(endTime, startTime) + player.penalty;
 }
 
 void Game::printResults()

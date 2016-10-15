@@ -7,13 +7,17 @@
  * the rASCIIng program.
  */
 
-#include <iostream> /* TODO Remove this */
+/*
+ * TODO:
+ * Have user pass in whether or not it wants obstacles?
+ * Use more string functions
+ */
+
+#include <string>
 #include <stdlib.h>
 #include "math.h"
 #include "time.h"
 #include "map.h"
-
-using namespace std; /* TODO Remove this */
 
 Map::Map()
 {
@@ -131,6 +135,10 @@ char *Map::createNext(int lastRow)
                 }
         }
 
+        if (((lastRow + 1) % OBS_FREQUENCY) == 0) {
+                row = addObs(row, row[boundaryIndex + offset]);
+        }
+
         return row;
 }
 
@@ -150,4 +158,17 @@ int Map::getBoundaryIndex(int row)
 char Map::getElement(int row, int col)
 {
         return map[row][col];
+}
+
+
+char *Map::addObs(char *row, char bound)
+{
+        std::string str = row;
+        size_t first = str.find_first_of(bound);
+        size_t last = str.find_last_of(bound);
+        int obsPos = rand()%(last - first - OBS_WIDTH) + first;
+        for (int i = obsPos; i < obsPos + OBS_WIDTH; i++) {
+                row[i] = OBS;
+        }
+        return row;
 }
