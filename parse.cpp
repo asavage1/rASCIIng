@@ -17,14 +17,12 @@ User updatePosition(User user, Map road)
 				user.finished = true;
 				return user;
 		}
-
 		cin >> input;
 		if (input == 'a') {
-				move_left(user);
+				user = move_left(user);
 		} else if (input == 'd') {
-				move_right(user);
+				user = move_right(user);
 		}
-
 		return user;
 		
 }

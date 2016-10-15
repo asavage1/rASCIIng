@@ -11,6 +11,8 @@
 #include "parse.h"
 #include "print_racing.h"
 
+using namespace std;
+
 Game::Game()
 {
 	player.finished = false;
@@ -22,10 +24,17 @@ Game::Game()
 
 void Game::play()
 {
+
+	cout << "here" << endl;
 	time_t startTime = time(NULL);
 	while (!player.finished) {
+		cout << "hereeeee" << endl;
 		player = updatePosition(player, map);
+
+		cout << "hereeeee" << endl;
 		print_race(map, player);
+		
+		cout << "hereeeee" << endl;
 		usleep(PAUSE);
 	}
 	time_t endTime = time(NULL);
