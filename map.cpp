@@ -94,9 +94,21 @@ char *Map::createNext(int lastRow)
 {
         char *row = new char[cols];
         int boundaryIndex = getBoundaryIndex(lastRow);
-        int offset = rand()%MAX_OFFSET - 1;
-        char boundaryChar;
 
+        int offset;
+        if (boundaryIndex == 0) {
+                offset = 1;
+        } else if (boundaryIndex == getWidth() - 1 - ROAD_WIDTH) {
+                offset = -1;
+        } else if (map[lastRow][boundaryIndex] == B_LFT) {
+                offset = rand()%(MAX_OFFSET - 1) - 1;
+        } else if (map[lastRow][boundaryIndex] == B_RT) {
+                offset = rand()%(MAX_OFFSET - 1);
+        } else {
+                offset = rand()%MAX_OFFSET - 1;
+        }
+
+        char boundaryChar;
         if (offset == -1) {
                 boundaryChar = B_LFT;
         } else if (offset == 0) {
