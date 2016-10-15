@@ -23,7 +23,7 @@ void print_race(Map *map, User car)
 {
 
         int map_width = map->getWidth();
-        int map_height = map->get_map_height();
+        int map_height = map->getHeight();
         //for (int i = 0; /*i < number of grid views*/; i++)
         //{
                 for (int j = VIEW_LENGTH + car.row; j > car.row - 4; j--)
