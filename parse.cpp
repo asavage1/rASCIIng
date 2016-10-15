@@ -88,10 +88,10 @@ User move_right(User user)
  */
 bool hit_object(User user, Map &road)
 {
-	char top_left = road.get(user.row - 1, user.col - 2);
-	char top_right = road.get(user.row - 1, user.col + 2);
-	char bot_left = road.get(user.row - 3, user.col - 2);
-	char bot_right = road.get(user.row - 3, user.col + 2);
+	char top_left = road.getElement(user.row - 1, user.col - 2);
+	char top_right = road.getElement(user.row - 1, user.col + 2);
+	char bot_left = road.getElement(user.row - 3, user.col - 2);
+	char bot_right = road.getElement(user.row - 3, user.col + 2);
         
 	if (top_left == B_STR or top_left == B_LFT or top_left == B_RT) {
 		return true;
