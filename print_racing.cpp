@@ -14,7 +14,6 @@
 #include <iostream>
 #include <string>
 #include <stdio.h>
-#include <ncurses.h>
 using namespace std;
 
 /*
