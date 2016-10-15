@@ -26,6 +26,7 @@ void Game::play()
 {
 	bool i = false;
 	time_t startTime = time(NULL);
+        print_countdown();
 	print_race(&map, player);
 	while (!player.finished) {
 		player = updatePosition(player, map);

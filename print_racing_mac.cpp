@@ -27,7 +27,6 @@ void print_race(Map *map, User car)
 {
         int map_width = map->getWidth();
         int map_height = map->getHeight();
-        print_countdown();
         for (int j = VIEW_LENGTH + car.row; j > car.row - 4; j--)
         {
                 if (j < map_height)
@@ -43,13 +42,20 @@ void print_race(Map *map, User car)
 void print_countdown()
 {
         cout << "Ready?" << endl;
+        cout.flush();
+        usleep(500000);
         cout << "3.. ";
-        usleep(100 * 1000);
+        cout.flush();
+        usleep(1000000);
         cout << "2.. ";
-        usleep(100 * 1000);
+        cout.flush();
+        usleep(1000000);
         cout << "1.. ";
-        usleep(100 * 1000);
+        cout.flush();
+        usleep(1000000);
         cout << "GO!" << endl;
+        cout.flush();
+        usleep(500000);
 }
 
 /*
