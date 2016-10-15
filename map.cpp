@@ -1,5 +1,5 @@
 /*
- * map.h
+ * map.cpp
  * Polyhack 2016, 10/14/16
  *
  * Generates a two dimensional array of characters based on user input (or if
@@ -7,10 +7,13 @@
  * the rASCIIng program.
  */
 
+#include <iostream> /* TODO Remove this */
 #include <stdlib.h>
 #include "math.h"
 #include "time.h"
 #include "map.h"
+
+using namespace std; /* TODO Remove this */
 
 Map::Map()
 {
@@ -19,11 +22,11 @@ Map::Map()
         newMap();
 }
 
-Map::Map(int width, int height)
+Map::Map(int height, int width)
 {
         /* Make sure parameters are reasonable */
-        rows = width;
-        cols = height;
+        rows = height;
+        cols = width;
         newMap();
 }
 
@@ -37,6 +40,7 @@ Map::~Map()
 
 void Map::newMap()
 {
+        srand(time(NULL));
         map = new char*[rows];
         for (int i = 0; i < rows; i++) {
                 map[i] = createMapRow(i - 1);
@@ -88,8 +92,6 @@ char *Map::createFirst()
 
 char *Map::createNext(int lastRow)
 {
-        srand(time(NULL));
-
         char *row = new char[cols];
         int boundaryIndex = getBoundaryIndex(lastRow);
         int offset = rand()%MAX_OFFSET - 1;
@@ -108,9 +110,9 @@ char *Map::createNext(int lastRow)
                         row[i] = OOB;
                 } else if (i == boundaryIndex + offset) {
                         row[i] = boundaryChar;
-                } else if (i < boundaryIndex + offset + cols) {
+                } else if (i < boundaryIndex + offset + ROAD_WIDTH) {
                         row[i] = RD;
-                } else if (i == boundaryIndex + offset + cols) {
+                } else if (i == boundaryIndex + offset + ROAD_WIDTH) {
                         row[i] = boundaryChar;
                 } else {
                         row[i] = OOB;

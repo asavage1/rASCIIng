@@ -16,7 +16,7 @@ using namespace std;
 Game::Game()
 {
 	player.finished = false;
-	player.row = 0;
+	player.row = 4;
 	player.col = map.getWidth() / 2;
 	player.penalty = 0;
 	seconds = 0;
@@ -27,14 +27,10 @@ void Game::play()
 
 	cout << "here" << endl;
 	time_t startTime = time(NULL);
+	print_race(&map, player);
 	while (!player.finished) {
-		cout << "hereeeee" << endl;
 		player = updatePosition(player, map);
-
-		cout << "hereeeee" << endl;
-		print_race(map, player);
-		
-		cout << "hereeeee" << endl;
+		print_race(&map, player);
 		usleep(PAUSE);
 	}
 	time_t endTime = time(NULL);

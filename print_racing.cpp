@@ -19,17 +19,20 @@ using namespace std;
  * Parameters:  map is the map to be printed from
  * Value returned: None (void function).
  */
-void print_race(Map map, User car)
+void print_race(Map *map, User car)
 {
 
-        int map_width = map.getWidth();
-        //int map_height = map.get_map_height();
+        int map_width = map->getWidth();
+        int map_height = map->getHeight();
         //for (int i = 0; /*i < number of grid views*/; i++)
         //{
                 for (int j = VIEW_LENGTH + car.row; j > car.row - 4; j--)
                 {
-                        char *row = map.getMapLine(j);
-                        print_row(car, row, map_width, j);
+                        if (j < map_height)
+                        {
+                                char *row = map->getMapLine(j);
+                                print_row(car, row, map_width, j);
+                        }
                 }
 
         //}
