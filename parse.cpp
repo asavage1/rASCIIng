@@ -95,7 +95,8 @@ bool hit_object(User user)
                 return true;
         } else if (user.row == B_STR or user.row == B_LFT or user.row == B_RT) {
                 return true;
-        }
+        } else {
         
         return false;
+}
 }
