@@ -16,7 +16,7 @@ const int ROWCHANGE = 5;
 User updatePosition(User user, Map &road)
 {
 		char input = '`';
-
+/*
 		int seconds = 1; //actually milliseconds
 	    while( seconds != 0 ) {
 	        if( _kbhit() ) { //if there is a key in keyboard buffer
@@ -26,7 +26,9 @@ User updatePosition(User user, Map &road)
 	        Sleep(1);
 	        usleep(100);
 	        --seconds; //countdown a second
-	    }
+		
+	    }*/
+		cin >> input;
 		if (input == 'a') {
 				user = move_left(user, road);
 		} else if (input == 'd') {
@@ -102,9 +104,9 @@ User move_right(User user, Map &road)
 bool hit_object_left(User user, Map &road)
 {
 	//ORIGINAL char top_left = road.getElement(user.row - 1, user.col - 3);
-	char top_left = road.getElement(user.row , user.col + 3);
+	char top_left = road.getElement(user.row + ROWCHANGE, user.col + 3);
 
-	char bot_left = road.getElement(user.row - 2, user.col + 3);
+	char bot_left = road.getElement(user.row - 2 + ROWCHANGE, user.col + 3);
 	//char middle_left = road.getElement(user.row - 2, user.col - 3);
 	//char front = road.getElement(user.row - 3, user.col - 3);
 
