@@ -1,7 +1,7 @@
 // parse.h
 #include "map.h"
-#include "Game.h"
-#include "User.h"
+#include "game.h"
+#include "user.h"
 
 User updatePosition(User user, Map road);
 bool reached_finish(User user, Map road);
