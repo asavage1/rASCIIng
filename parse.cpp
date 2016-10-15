@@ -53,7 +53,7 @@ bool reached_finish(User user, Map &road)
  */
 User move_left(User user, Map &road)
 {
-		if (hit_object(user, road)) {
+		if (hit_object_left(user, road)) {
 				user.penalty++;
 				return user;
 		}
@@ -71,7 +71,7 @@ User move_left(User user, Map &road)
 User move_right(User user, Map &road)
 {
 
-        if (hit_object(user, road)) {
+        if (hit_object_right(user, road)) {
                 user.penalty++;
         	return user;
 	}
@@ -86,33 +86,32 @@ User move_right(User user, Map &road)
  * Parameters: the user, the road
  * Value returned: true if has hit and object, false if not
  */
-bool hit_object(User user, Map &road)
+bool hit_object_left(User user, Map &road)
 {
-	char top_left = road.getElement(user.row - 1, user.col - 2);
-	char top_right = road.getElement(user.row - 1, user.col + 2);
-	char bot_left = road.getElement(user.row - 3, user.col - 2);
-	char bot_right = road.getElement(user.row - 3, user.col + 2);
-        
+	char top_left = road.getElement(user.row - 1, user.col - 3);
+	char bot_left = road.getElement(user.row - 3, user.col - 3);
+
 	if (top_left == B_STR or top_left == B_LFT or top_left == B_RT) {
 		return true;
-	} else if (top_right == B_STR or top_right == B_LFT or top_right == B_RT) {
-		return true;
 	} else if (bot_left == B_STR or bot_left == B_LFT or bot_left == B_RT) {
+		return true;
+	}
+        return false;
+
+}
+
+bool hit_object_right(User user, Map &road)
+{
+	char top_right = road.getElement(user.row - 1, user.col + 3);	
+	char bot_right = road.getElement(user.row - 3, user.col + 3);
+        
+	if (top_right == B_STR or top_right == B_LFT or top_right == B_RT) {
 		return true;
 	} else if (bot_right == B_STR or bot_right == B_LFT or bot_right == B_RT) {
 		return true;
 	}
-/*
-if (user.col + 2 == B_STR or user.col + 2 == B_LFT or user.col + 2 == B_RT ) {
-                return true;
-        } else if (user.col - 2 == B_STR or user.col - 2 == B_LFT or user.col - 2 == B_RT) {
-                return true;
-        } else if (user.row - 3 == B_STR or user.row - 3 == B_LFT or user.col - 2 == B_RT) {
-                return true;
-        } else if (user.row == B_STR or user.row == B_LFT or user.row == B_RT) {
-                return true;
-        } else {
-  */      
-        return false;
-
+	return false;
 }
+
+
+
