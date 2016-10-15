@@ -37,6 +37,7 @@ private:
         static const int DEFAULT_COLS = 80;
         static const int ROAD_WIDTH = 40; /* so width >= 60 TODO */
         /* Make int FIRST_ROW = 0; ? */
+        static const int MAX_OFFSET = 3;
 
         char **map;
         int rows;

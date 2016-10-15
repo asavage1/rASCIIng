@@ -88,8 +88,35 @@ char *Map::createFirst()
 char *Map::createNext(int lastRow)
 {
         srand(time(NULL));
+
+        char *row;
         int boundaryIndex = getBoundaryIndex(lastRow);
-        return 'a';
+        int offset = rand()%MAX_OFFSET - 1;
+        char boundaryChar;
+
+        if (offset == -1) {
+                boundaryChar = B_LFT;
+        } else if (offset == 0) {
+                boundaryChar = B_STR;
+        } else {
+                boundaryChar = B_RT;
+        }
+
+        for (int i = 0; i < cols; i++) {
+                if (i < boundaryIndex + offset) {
+                        row[i] = OOB;
+                } else if (i == boundaryIndex + offset) {
+                        row[i] = boundaryChar;
+                } else if (i < boundaryIndex + offset + cols) {
+                        row[i] = RD;
+                } else if (i == boundaryIndex + offset + cols) {
+                        row[i] = boundaryChar;
+                } else {
+                        row[i] OOB;
+                }
+        }
+
+        return row;
 }
 
 int Map::getBoundaryIndex(int row)
