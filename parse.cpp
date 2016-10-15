@@ -22,9 +22,9 @@ User updatePosition(User user, Map &road)
 //			input = getch();
 		cin >> input;
 		if (input == 'a') {
-				user = move_left(user);
+				user = move_left(user, road);
 		} else if (input == 'd') {
-				user = move_right(user);
+				user = move_right(user, road);
 		}
 //}
 		return user;
@@ -51,9 +51,9 @@ bool reached_finish(User user, Map &road)
  * Parameters: the user, the map
  * Value returned: the updated user
  */
-User move_left(User user)
+User move_left(User user, Map &road)
 {
-		if (hit_object(user)) {
+		if (hit_object(user, road)) {
 				user.penalty++;
 				return user;
 		}
@@ -68,10 +68,10 @@ User move_left(User user)
  * Parameters: the user, the map
  * Value returned: the updated user
  */
-User move_right(User user)
+User move_right(User user, Map &road)
 {
 
-        if (hit_object(user)) {
+        if (hit_object(user, road)) {
                 user.penalty++;
         	return user;
 	}
