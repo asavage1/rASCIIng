@@ -146,3 +146,8 @@ int Map::getBoundaryIndex(int row)
         }
         return index;
 }
+
+char Map::getElement(int row, int col)
+{
+        return map[row][col];
+}
