@@ -27,10 +27,10 @@ void Game::play()
 
 	cout << "here" << endl;
 	time_t startTime = time(NULL);
-	print_race(map, player);
+	print_race(&map, player);
 	while (!player.finished) {
 		player = updatePosition(player, map);
-		print_race(map, player);
+		print_race(&map, player);
 		usleep(PAUSE);
 	}
 	time_t endTime = time(NULL);
