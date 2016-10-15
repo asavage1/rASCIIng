@@ -58,16 +58,22 @@ void print_row(User car, char *row, int width, int row_index)
                 if (row_index == car.row && i == car.col)
                 {
                        addch(CAR_BUMPER);         
+//                       fputc(CAR_BUMPER, stdout);         
 
                 }
 
                 else if (row_index == car.row - 1 && i == car.col - 2)      
                 {
                         addch(CAR_WHEEL);
+//                        fputc(CAR_WHEEL, stdout);
                         addch(CAR_EDGE);
+//                        fputc(CAR_EDGE, stdout);
                         addch(' ');
-                        addch(CAR_EDGE); 
+//                        fputc(' ', stdout);
+                        addch(CAR_EDGE, stdout); 
+//                        fputc(CAR_EDGE, stdout); 
                         addch(CAR_WHEEL);
+//                        fputc(CAR_WHEEL, stdout);
                         i += 4;
 
                 }
