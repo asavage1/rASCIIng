@@ -2,6 +2,7 @@
 #include "map.h"
 #include "game.h"
 #include "user.h"
+#include <iostream>
 
 User updatePosition(User user, Map road);
 bool reached_finish(User user, Map road);
