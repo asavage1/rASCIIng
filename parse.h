@@ -1,3 +1,6 @@
+#ifndef PARSE_H
+#define PARSE_H
+
 // parse.h
 #include "map.h"
 #include "game.h"
@@ -11,4 +14,4 @@ User move_right(User user, Map road);
 bool hit_object(User user, Map road);
 
 
-
+#endif /* PARSE_H */
