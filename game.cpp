@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <unistd.h>
+#include "parse.h"
 #include "print_racing.h"
 
 Game::Game()
