@@ -2,8 +2,8 @@
 
 /* Purpose: updates the position of the car and validates that it has
  *		not collided with anything
- * Parameters: 
- * Value returned:
+ * Parameters: the user to be updated, the map 
+ * Value returned: modified user struct
  */
 User update_position(User user, map road)
 {
@@ -26,7 +26,10 @@ User update_position(User user, map road)
 		
 }
 
-
+/* Purpose: checks if the user is at the finish line
+ * Parameters: the user and the map
+ * Value returned: true if at finish line, false if not
+ */
 bool reached_finish(User user, map road) 
 {
 
@@ -38,7 +41,11 @@ bool reached_finish(User user, map road)
 
 }
 
-
+/* Purpose: moves the user to the left if has not collided
+		with a wall, adds penalty if needed.
+ * Parameters: the user, the map
+ * Value returned: the updated user
+ */
 User move_left(User user, map road)
 {
 		if (hit_object) {
@@ -50,7 +57,11 @@ User move_left(User user, map road)
 		return user;
 }
 
-
+/* Purpose: moves the user to the right if not a collision
+		with a wall, add penalty if needed
+ * Parameters: the user, the map
+ * Value returned: the updated user
+ */
 User move_right(User user, map road)
 {
 
@@ -64,6 +75,10 @@ User move_right(User user, map road)
 
 }
 
+/* Purpose: checks if the user has hit a wall or not
+ * Parameters: the user, the road
+ * Value returned: true if has hit and object, false if not
+ */
 bool hit_object(User user, map road)
 {
 
