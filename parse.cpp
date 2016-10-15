@@ -86,12 +86,12 @@ User move_right(User user)
  * Parameters: the user, the road
  * Value returned: true if has hit and object, false if not
  */
-bool hit_object(User user, Map road)
+bool hit_object(User user, Map &road)
 {
-	char top_left = road[user.row - 1][user.col - 2];
-	char top_right = road[user.row - 1][user.col + 2];
-	char bot_left = road[user.row - 3][user.col - 2];
-	char bot_right = road[user.row - 3][user.col + 2];
+	char top_left = road.get(user.row - 1, user.col - 2);
+	char top_right = road.get(user.row - 1, user.col + 2);
+	char bot_left = road.get(user.row - 3, user.col - 2);
+	char bot_right = road.get(user.row - 3, user.col + 2);
         
 	if (top_left == B_STR or top_left == B_LFT or top_left == B_RT) {
 		return true;
