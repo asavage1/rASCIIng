@@ -13,8 +13,8 @@ using namespace std;
 
 int main()
 {
-        Map map(10, 80);
-        for (int i = 9; i >= 0; i--) {
+        Map map;
+        for (int i = map.getHeight() - 1; i >= 0; i--) {
                 string str = map.getMapLine(i);
                 cout << str << endl;
         }
