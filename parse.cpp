@@ -55,6 +55,7 @@ User move_left(User user)
 {
 		if (hit_object(user)) {
 				user.penalty++;
+				return user;
 		}
 
 		user.col = user.col - 1;
@@ -72,7 +73,8 @@ User move_right(User user)
 
         if (hit_object(user)) {
                 user.penalty++;
-        }
+        	return user;
+	}
         
         user.row = user.row - 1;
         
