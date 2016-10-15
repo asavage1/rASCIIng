@@ -1,5 +1,7 @@
 // parse.cpp
 #include "parse.h"
+#include <iostream>
+using namespace std;
 
 
 /* Purpose: updates the position of the car and validates that it has
@@ -19,9 +21,9 @@ User updatePosition(User user, Map road)
 
 		cin >> input;
 		if (input == 'a') {
-				move_left(coords, road);
+				move_left(user, road);
 		} else if (input == 'd') {
-				move_right(coords, road);
+				move_right(user, road);
 		}
 
 		return user;
@@ -35,7 +37,7 @@ User updatePosition(User user, Map road)
 bool reached_finish(User user, Map road) 
 {
 
-		if (user.row == road.get_height()) {
+		if (user.row == road.getHeight()) {
 				return true;
 		} else {
 				return false;
