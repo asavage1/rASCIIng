@@ -3,6 +3,9 @@
 //
 // rASCIIng main race game class
 
+#ifndef GAME_H
+#define GAME_H
+
 #include "map.h"
 #include "user.h"
 
@@ -19,3 +22,5 @@ private:
 	User player;
 	double seconds;
 };
+
+#endif // GAME_H
