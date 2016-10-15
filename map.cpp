@@ -166,7 +166,7 @@ char *Map::addObs(char *row, char bound)
         std::string str = row;
         size_t first = str.find_first_of(bound);
         size_t last = str.find_last_of(bound);
-        int obsPos = rand()%(last - first - OBS_WIDTH) + first;
+        int obsPos = rand()%(last - first - OBS_WIDTH - 1) + first + 1;
         for (int i = obsPos; i < obsPos + OBS_WIDTH; i++) {
                 row[i] = OBS;
         }

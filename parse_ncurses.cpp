@@ -1,8 +1,8 @@
 // parse.cpp
 #include "parse.h"
 #include <iostream>
-#include <unistd.h>
 #include <ncurses.h>
+#include <unistd.h>
 using namespace std;
 
 const int ROWCHANGE = 5;
@@ -21,8 +21,8 @@ User updatePosition(User user, Map &road)
         initscr();
         cbreak();
         noecho();
-        //scrollok(stdscr, TRUE);
-        //nodelay(stdscr, TRUE);
+        scrollok(stdscr, TRUE);
+        nodelay(stdscr, TRUE);
         while (seconds != 0) {
                 if (getch() == 'a') {
                         user = move_left(user, road);
@@ -35,20 +35,11 @@ User updatePosition(User user, Map &road)
                 --seconds;
         }
         
-        if (input == 'a') {
-                user = move_left(user, road);
-        } else if (input == 'd') {
-                user = move_right(user, road);
-        } else {
-                user.row += ROWCHANGE;
-        }
-        
         if (reached_finish(user, road)) {
                 user.finished = true;
                 return user;
         }
         
-        //}
         return user;
         
 }
