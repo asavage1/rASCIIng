@@ -35,6 +35,7 @@ public:
 
         int getHeight();
         int getWidth();
+        char getElement(int row, int col);
 private:
         /* Used when client doesn't specify rows or cols */
         static const int DEFAULT_ROWS = 10000;
