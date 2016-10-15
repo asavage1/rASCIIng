@@ -7,6 +7,7 @@
  * the rASCIIng program.
  */
 
+#include <stdlib.h>
 #include "math.h"
 #include "time.h"
 #include "map.h"
@@ -112,7 +113,7 @@ char *Map::createNext(int lastRow)
                 } else if (i == boundaryIndex + offset + cols) {
                         row[i] = boundaryChar;
                 } else {
-                        row[i] OOB;
+                        row[i] = OOB;
                 }
         }
 
