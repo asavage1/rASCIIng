@@ -38,9 +38,9 @@ public:
         char getElement(int row, int col);
 private:
         /* Used when client doesn't specify rows or cols */
-        static const int DEFAULT_ROWS = 10000;
-        static const int DEFAULT_COLS = 80;
-        static const int ROAD_WIDTH = 40; /* so width >= 60 TODO */
+        static const int DEFAULT_ROWS = 500;
+        static const int DEFAULT_COLS = 50;
+        static const int ROAD_WIDTH = 30; /* so width >= 60 TODO */
         /* Make int FIRST_ROW = 0; ? */
         static const int MAX_OFFSET = 3;
 

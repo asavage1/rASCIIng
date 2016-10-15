@@ -12,6 +12,8 @@
 #include "print_racing.h"
 
 #include <iostream>
+#include <string>
+#include <stdio.h>
 using namespace std;
 
 /*
@@ -21,7 +23,6 @@ using namespace std;
  */
 void print_race(Map *map, User car)
 {
-
         int map_width = map->getWidth();
         int map_height = map->getHeight();
         //for (int i = 0; /*i < number of grid views*/; i++)
@@ -32,6 +33,8 @@ void print_race(Map *map, User car)
                         {
                                 char *row = map->getMapLine(j);
                                 print_row(car, row, map_width, j);
+                        } else {
+                                fputc('\n', stdout);
                         }
                 }
 
@@ -44,42 +47,52 @@ void print_race(Map *map, User car)
  * Parameters:  row is the pointer to the array of characters.
  * Value returned: None (void function).
  */
+
+
 void print_row(User car, char *row, int width, int row_index)
 {
         for (int i = 0; i < width; i++)
         {
                 if (row_index == car.row && i == car.col)
                 {
-                       cout << CAR_BUMPER;         
+                       fputc(CAR_BUMPER, stdout);         
+
                 }
 
                 else if (row_index == car.row - 1 && i == car.col - 2)      
                 {
-                        cout << CAR_WHEEL << CAR_EDGE << " " << CAR_EDGE 
-                            << CAR_WHEEL;
+                        fputc(CAR_WHEEL, stdout);
+                        fputc(CAR_EDGE, stdout);
+                        fputc(' ', stdout);
+                        fputc(CAR_EDGE, stdout); 
+                        fputc(CAR_WHEEL, stdout);
                         i += 4;
 
                 }
                 else if (row_index == car.row - 2 && i == car.col - 1)  
                 {
-                        cout << CAR_EDGE << " " << CAR_EDGE;
+                        fputc(CAR_EDGE, stdout);
+                        fputc(' ', stdout);
+                        fputc(CAR_EDGE, stdout);
                         i += 2;
                 }
                 else if (row_index == car.row - 3 && i == car.col - 2) 
                 {
-                        cout << CAR_WHEEL << CAR_EDGE << CAR_BUMPER 
-                            << CAR_EDGE << CAR_WHEEL;
+                        fputc(CAR_WHEEL, stdout);
+                        fputc(CAR_EDGE, stdout);
+                        fputc(CAR_BUMPER, stdout);
+                        fputc(CAR_EDGE, stdout); 
+                        fputc(CAR_WHEEL, stdout);
                         i+=4;
                 }
                 else
                 {
-                    cout << row[i];
+                    fputc(row[i], stdout);
                 }
                 if (i == width - 1)
                 {
-                        cout << endl;
+                        fputc('\n', stdout);
                 }
 
         }
-
-}
+} 

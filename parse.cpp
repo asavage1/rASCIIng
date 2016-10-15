@@ -1,8 +1,12 @@
 // parse.cpp
 #include "parse.h"
 #include <iostream>
+#include <unistd.h>
+#include <windows.h>
+#include <conio.h>
 using namespace std;
 
+const int ROWCHANGE = 5;
 
 /* Purpose: updates the position of the car and validates that it has
  *		not collided with anything
@@ -11,21 +15,30 @@ using namespace std;
  */
 User updatePosition(User user, Map &road)
 {
-		char input;
+		char input = '`';
 
+		int seconds = 1; //actually milliseconds
+	    while( seconds != 0 ) {
+	        if( _kbhit() ) { //if there is a key in keyboard buffer
+	            input = _getch(); //get the char
+	            break; //we got char! No need to wait anymore...
+	        }
+	        Sleep(1);
+	        usleep(100);
+	        --seconds; //countdown a second
+	    }
+		if (input == 'a') {
+				user = move_left(user, road);
+		} else if (input == 'd') {
+				user = move_right(user, road);
+		} else {
+			user.row += ROWCHANGE;
+		}
 		if (reached_finish(user, road)) {
 				user.finished = true;
 				return user;
 		}
 
-//		while(!reached_finish(user, road)) {
-//			input = getch();
-		cin >> input;
-		if (input == 'a') {
-				user = move_left(user, road);
-		} else if (input == 'd') {
-				user = move_right(user, road);
-		}
 //}
 		return user;
 		
@@ -38,7 +51,7 @@ User updatePosition(User user, Map &road)
 bool reached_finish(User user, Map &road) 
 {
 
-		if (user.row == road.getHeight()) {
+		if (user.row >= road.getHeight()) {
 				return true;
 		} else {
 				return false;
@@ -59,7 +72,7 @@ User move_left(User user, Map &road)
 		}
 
 		user.col = user.col - 1;
-		user.row = user.row + 1;
+		user.row = user.row + ROWCHANGE;
 		return user;
 }
 
@@ -76,7 +89,7 @@ User move_right(User user, Map &road)
         	return user;
 	}
         
-        user.row = user.row + 1;
+        user.row = user.row + ROWCHANGE;
         user.col = user.col + 1;
         return user;
 
@@ -112,6 +125,3 @@ bool hit_object_right(User user, Map &road)
 	}
 	return false;
 }
-
-
-
