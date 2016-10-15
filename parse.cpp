@@ -1,4 +1,6 @@
 // parse.cpp
+#include "parse.h"
+
 
 /* Purpose: updates the position of the car and validates that it has
  *		not collided with anything
