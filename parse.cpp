@@ -9,7 +9,7 @@ using namespace std;
  * Parameters: the user to be updated, the map 
  * Value returned: modified user struct
  */
-User updatePosition(User user, Map road)
+User updatePosition(User user, Map &road)
 {
 		char input;
 
@@ -17,12 +17,16 @@ User updatePosition(User user, Map road)
 				user.finished = true;
 				return user;
 		}
+
+//		while(!reached_finish(user, road)) {
+//			input = getch();
 		cin >> input;
 		if (input == 'a') {
 				user = move_left(user);
 		} else if (input == 'd') {
 				user = move_right(user);
 		}
+//}
 		return user;
 		
 }
@@ -31,7 +35,7 @@ User updatePosition(User user, Map road)
  * Parameters: the user and the map
  * Value returned: true if at finish line, false if not
  */
-bool reached_finish(User user, Map road) 
+bool reached_finish(User user, Map &road) 
 {
 
 		if (user.row == road.getHeight()) {
@@ -95,15 +99,3 @@ bool hit_object(User user)
         
         return false;
 }
-
-
-
-
-
-
-
-
-
-
-
-
