@@ -40,5 +40,5 @@ void Game::play()
 
 void Game::printResults()
 {
-	std::cout << "\nYour time was " << seconds << " seconds! Good job!";
+	std::cout << "\nYour time was " << seconds << " seconds! Good job!" << std::endl;
 }
