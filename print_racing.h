@@ -9,10 +9,13 @@
  * Function declarations for print_racing.c
  */
 
+#include "map.h"
+#include "user.h"
+
 char OOB = 'X';
 char RD = ' ';
 char B_STR = '|';
-char B_LFT = '\';
+char B_LFT = '\\';
 char B_RT = '/';
 char VIEW_LENGTH = 20;
 char CAR_BUMPER = '_';
@@ -22,4 +25,4 @@ char CAR_WHEEL = 'O';
 
 void print_race(Map map, User car);
 
-void print_row(char *row, int width, int row_index);
+void print_row(User car, char *row, int width, int row_index);
