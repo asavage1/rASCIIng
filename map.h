@@ -10,6 +10,8 @@
 #ifndef MAP_H_
 #define MAP_H_
 
+#include "print_racing.h"
+
 class Map {
 public:
         /* Default constructor */
@@ -33,23 +35,18 @@ private:
         /* Used when client doesn't specify rows or cols */
         static const int DEFAULT_ROWS = 10000;
         static const int DEFAULT_COLS = 80;
-
-        /* Needs to include intialization for map ASCII chars */
-        static const char B_STR;
-        static const char B_LFT;
-        static const char B_RT;
-        static const char OOB;
-        static const char RD;
         static const int ROAD_WIDTH = 40; /* so width >= 60 TODO */
         /* Make int FIRST_ROW = 0; ? */
 
         char **map;
         int rows;
         int cols;
+        char prevBoundary;
 
         char *createMapRow(int i);
         char *createFirst();
         char *createNext(int lastRow);
+        int getBoundaryIndex(int row);
 };
 
 #endif /* MAP_H_ */

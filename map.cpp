@@ -81,11 +81,26 @@ char *Map::createFirst()
                         row[i] = OOB;
                 }
         }
+        prevBoundary = B_STR;
         return row;
 }
 
 char *Map::createNext(int lastRow)
 {
         srand(time(NULL));
-        
+        int boundaryIndex = getBoundaryIndex(lastRow);
+        return 'a';
+}
+
+int Map::getBoundaryIndex(int row)
+{
+        int index;
+        for (index = 0; index < cols; index++) {
+                if (map[row][index] == B_STR || 
+                    map[row][index] == B_LFT || 
+                    map[row][index] == B_RT) {
+                        break;
+                }
+        }
+        return index;
 }
