@@ -10,7 +10,7 @@
 
 
 #include "print_racing.h"
-#include "Map.h"
+
 #include <iostream>
 using namespace std;
 
@@ -28,8 +28,8 @@ void print_race(Map map, User car)
         //{
                 for (int j = VIEW_LENGTH + car.row; j > car.row - 4; j--)
                 {
-                        char row[map_width] = map.get_map_line(j);
-                        print_row(row, map_width, j);
+                        char *row = map.getMapLine(j);
+                        print_row(car, row, map_width, j);
                 }
 
         //}
@@ -41,7 +41,7 @@ void print_race(Map map, User car)
  * Parameters:  row is the pointer to the array of characters.
  * Value returned: None (void function).
  */
-void print_row(char *row, int width, int row_index)
+void print_row(User car, char *row, int width, int row_index)
 {
         for (int i = 0; i < width; i++)
         {
