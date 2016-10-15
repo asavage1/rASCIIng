@@ -22,7 +22,7 @@ public:
         Map();
 
         /* Constructor with parameters */
-        Map(int row, int col);
+        Map(int height, int width);
 
         /* Destructor */
         ~Map();
