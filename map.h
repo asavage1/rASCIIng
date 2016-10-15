@@ -15,6 +15,7 @@ const char RD = ' ';
 const char B_STR = '|';
 const char B_LFT = '\\';
 const char B_RT = '/';
+const char OBS = '^';
 
 class Map {
 public:
@@ -43,6 +44,8 @@ private:
         static const int ROAD_WIDTH = 40; /* so width >= 60 TODO */
         /* Make int FIRST_ROW = 0; ? */
         static const int MAX_OFFSET = 3;
+        static const int OBS_FREQUENCY = 30;
+        static const int OBS_WIDTH = 3;
 
         char **map;
         int rows;
@@ -53,6 +56,7 @@ private:
         char *createFirst();
         char *createNext(int lastRow);
         int getBoundaryIndex(int row);
+        char *addObs(char *row, char bound);
 };
 
 #endif /* MAP_H_ */

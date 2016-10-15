@@ -8,6 +8,7 @@
  */
 
 #include <iostream> /* TODO Remove this */
+#include <string>
 #include <stdlib.h>
 #include "math.h"
 #include "time.h"
@@ -131,6 +132,10 @@ char *Map::createNext(int lastRow)
                 }
         }
 
+        if (((lastRow + 1) % OBS_FREQUENCY) == 0) {
+                row = addObs(row, row[boundaryIndex + offset]);
+        }
+
         return row;
 }
 
@@ -150,4 +155,17 @@ int Map::getBoundaryIndex(int row)
 char Map::getElement(int row, int col)
 {
         return map[row][col];
+}
+
+
+char *Map::addObs(char *row, char bound)
+{
+        string str = row;
+        size_t first = str.find_first_of(bound);
+        size_t last = str.find_last_of(bound);
+        int obsPos = rand()%(last - first - OBS_WIDTH) + first;
+        for (int i = obsPos; i < obsPos + OBS_WIDTH; i++) {
+                row[i] = OBS;
+        }
+        return row;
 }
