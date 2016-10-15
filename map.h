@@ -10,7 +10,11 @@
 #ifndef MAP_H_
 #define MAP_H_
 
-#include "print_racing.h"
+const char OOB = 'X';
+const char RD = ' ';
+const char B_STR = '|';
+const char B_LFT = '\\';
+const char B_RT = '/';
 
 class Map {
 public:

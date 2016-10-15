@@ -15,11 +15,6 @@
 #include "map.h"
 #include "user.h"
 
-const char OOB = 'X';
-const char RD = ' ';
-const char B_STR = '|';
-const char B_LFT = '\\';
-const char B_RT = '/';
 const int VIEW_LENGTH = 20;
 const char CAR_BUMPER = '_';
 const char CAR_EDGE = '|';
