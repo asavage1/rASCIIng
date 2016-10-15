@@ -10,6 +10,7 @@
 #include "game.h"
 #include "parse.h"
 #include "print_racing.h"
+#include <windows.h>
 
 using namespace std;
 
@@ -32,7 +33,7 @@ void Game::play()
 		if (i++ % 2) {
 			print_race(&map, player);
 		}
-		usleep(PAUSE);
+		Sleep(PAUSE);
 	}
 	time_t endTime = time(NULL);
 	seconds = difftime(endTime, startTime) + player.penalty;

@@ -4,9 +4,11 @@
 #include <unistd.h>
 #include <windows.h>
 #include <conio.h>
+//#include <limits>
 using namespace std;
 
 const int ROWCHANGE = 5;
+const int COLCHANGE = 2;
 
 /* Purpose: updates the position of the car and validates that it has
  *		not collided with anything
@@ -17,15 +19,16 @@ User updatePosition(User user, Map &road)
 {
 		char input = '`';
 
-		int seconds = 1; //actually milliseconds
+		int seconds = 2; //actually centiseconds
 	    while( seconds != 0 ) {
 	        if( _kbhit() ) { //if there is a key in keyboard buffer
 	            input = _getch(); //get the char
-	            break; //we got char! No need to wait anymore...
+	            
 	        }
-	        Sleep(1);
-	        usleep(100);
+	        Sleep(100);
+	        //usleep(100);
 	        --seconds; //countdown a second
+	        //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	    }
 		if (input == 'a') {
 				user = move_left(user, road);
@@ -71,7 +74,7 @@ User move_left(User user, Map &road)
 				return user;
 		}
 
-		user.col = user.col - 1;
+		user.col = user.col - COLCHANGE;
 		user.row = user.row + ROWCHANGE;
 		return user;
 }
@@ -90,7 +93,7 @@ User move_right(User user, Map &road)
 	}
         
         user.row = user.row + ROWCHANGE;
-        user.col = user.col + 1;
+        user.col = user.col + COLCHANGE;
         return user;
 
 }

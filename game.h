@@ -17,7 +17,7 @@ public:
 	void printResults();
 
 private:
-	const static unsigned int PAUSE = 250000;
+	const static unsigned int PAUSE = 100;
 	Map map;
 	User player;
 	double seconds;
